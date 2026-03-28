@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine a Leads Recouvrement | VOCALIS.PRO</title>
+    <meta name="description" content="Systeme automatise qui detecte, qualifie et contacte des entreprises avec des impayes. 1000 prospects qualifies/mois, 20-50 RDVs generes.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0c0b1d;
+            --bg-secondary: #13122a;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --accent-violet: #8b7cf7;
+            --accent-pink: #e879a8;
+            --accent-green: #2ed47a;
+            --accent-red: #ff5a5a;
+            --accent-orange: #ff8c42;
+            --text-primary: #FFFFFF;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6b6b80;
+            --gradient-main: linear-gradient(135deg, #8b7cf7, #e879a8);
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --max-width: 1100px;
+            --radius: 16px;
+            --radius-sm: 10px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .gradient-text {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ============================================
+           NAVBAR
+           ============================================ */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            background: rgba(12, 11, 29, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-card);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-logo {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .navbar-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+        }
+
+        .navbar-links a:hover { color: white; }
+
+        .navbar-cta {
+            padding: 10px 24px;
+            background: var(--gradient-main);
+            border-radius: var(--radius-sm);
+            color: white !important;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* ============================================
+           SECTION BASE
+           ============================================ */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(139, 124, 247, 0.1);
+            border: 1px solid rgba(139, 124, 247, 0.3);
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-violet);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 650px;
+            line-height: 1.7;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           GLASS CARD
+           ============================================ */
+        .glass-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius);
+            padding: 32px;
+            backdrop-filter: blur(20px);
+        }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px; right: -200px;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(139, 124, 247, 0.15), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px; left: -100px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(232, 121, 168, 0.1), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-highlight {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: 19px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero-stat {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius);
+            padding: 28px 20px;
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-heading);
+            font-size: 42px;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .hero-stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            margin-bottom: 32px;
+        }
+
+        /* ============================================
+           CONSTAT - BEFORE / AFTER
+           ============================================ */
+        .constat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .constat-card {
+            border-radius: var(--radius);
+            padding: 36px;
+        }
+
+        .constat-card.before {
+            background: rgba(255, 90, 90, 0.04);
+            border: 1px solid rgba(255, 90, 90, 0.15);
+        }
+
+        .constat-card.after {
+            background: rgba(46, 212, 122, 0.04);
+            border: 1px solid rgba(46, 212, 122, 0.15);
+        }
+
+        .constat-card-title {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .constat-card.before .constat-card-title { color: var(--accent-red); }
+        .constat-card.after .constat-card-title { color: var(--accent-green); }
+
+        .constat-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .constat-list li {
+            display: flex;
+            gap: 12px;
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .constat-list li .icon {
+            flex-shrink: 0;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+
+        .constat-list li strong {
+            color: white;
+        }
+
+        .constat-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .constat-feature {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius);
+            padding: 28px;
+            text-align: center;
+        }
+
+        .constat-feature-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .constat-feature h4 {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .constat-feature p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           PIPELINE
+           ============================================ */
+        .pipeline {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .pipeline-step {
+            display: grid;
+            grid-template-columns: 180px 1fr 120px;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .pipeline-label {
+            text-align: right;
+            font-size: 14px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .pipeline-label .icon { font-size: 16px; }
+
+        .pipeline-bar {
+            border-radius: var(--radius-sm);
+            padding: 14px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: white;
+            white-space: normal;
+            word-wrap: break-word;
+            line-height: 1.4;
+        }
+
+        .pipeline-bar-1 {
+            background: linear-gradient(90deg, #6c5ce7, #00b894);
+            width: 100%;
+        }
+
+        .pipeline-bar-2 {
+            background: linear-gradient(90deg, #fdcb6e, #e17055);
+            width: 88%;
+        }
+
+        .pipeline-bar-3 {
+            background: linear-gradient(90deg, #a29bfe, #6c5ce7);
+            width: 75%;
+        }
+
+        .pipeline-bar-4 {
+            background: linear-gradient(90deg, #fd79a8, #e84393);
+            width: 55%;
+            opacity: 0.9;
+        }
+
+        .pipeline-bar-5 {
+            background: linear-gradient(90deg, #00b894, #00cec9);
+            width: 38%;
+        }
+
+        .pipeline-count {
+            text-align: right;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .pipeline-count strong {
+            color: white;
+            font-size: 18px;
+        }
+
+        /* Qualification criteria */
+        .qualif-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .qualif-item {
+            background: rgba(46, 212, 122, 0.05);
+            border: 1px solid rgba(46, 212, 122, 0.15);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qualif-check {
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           PRICING
+           ============================================ */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .pricing-card {
+            border-radius: var(--radius);
+            padding: 40px;
+            position: relative;
+        }
+
+        .pricing-card.setup {
+            background: rgba(139, 124, 247, 0.05);
+            border: 1px solid rgba(139, 124, 247, 0.2);
+        }
+
+        .pricing-card.monthly {
+            background: rgba(139, 124, 247, 0.08);
+            border: 2px solid rgba(139, 124, 247, 0.4);
+        }
+
+        .pricing-card-label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent-violet);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pricing-card h3 {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            font-size: 14px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: "\2713";
+            color: var(--accent-green);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .pricing-amount {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .pricing-period {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Cost comparison table */
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+        }
+
+        .cost-table thead th {
+            text-align: left;
+            padding: 16px 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-card);
+        }
+
+        .cost-table tbody td {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text-secondary);
+        }
+
+        .cost-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .cost-table .highlight-row {
+            background: rgba(139, 124, 247, 0.08);
+        }
+
+        .cost-table .highlight-row td {
+            color: var(--accent-violet);
+            font-weight: 600;
+        }
+
+        .cost-table .cost-rdv { font-weight: 700; color: white; }
+
+        .cost-compare-good { color: var(--accent-green); font-weight: 600; }
+        .cost-compare-bad { color: var(--accent-red); font-weight: 600; }
+        .cost-compare-neutral { color: var(--accent-orange); font-weight: 600; }
+
+        /* ============================================
+           ROI
+           ============================================ */
+        .roi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .roi-card {
+            border-radius: var(--radius);
+            padding: 36px;
+        }
+
+        .roi-card.before {
+            background: rgba(255, 90, 90, 0.04);
+            border: 1px solid rgba(255, 90, 90, 0.15);
+        }
+
+        .roi-card.after {
+            background: rgba(46, 212, 122, 0.04);
+            border: 1px solid rgba(46, 212, 122, 0.15);
+        }
+
+        .roi-card-title {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .roi-card.before .roi-card-title { color: var(--accent-red); }
+        .roi-card.after .roi-card-title { color: var(--accent-green); }
+
+        .roi-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .roi-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .roi-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .roi-row .value {
+            font-weight: 700;
+            color: white;
+        }
+
+        .roi-row .value.green { color: var(--accent-green); }
+        .roi-row .value.red { color: var(--accent-red); }
+
+        /* Financial projection */
+        .projection-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .projection-card {
+            background: rgba(139, 124, 247, 0.06);
+            border: 1px solid rgba(139, 124, 247, 0.15);
+            border-radius: var(--radius);
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        .projection-number {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .projection-number.invest { color: var(--accent-violet); }
+        .projection-number.current { color: var(--text-secondary); }
+        .projection-number.saving { color: var(--accent-green); }
+
+        .projection-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .roi-summary {
+            background: rgba(139, 124, 247, 0.06);
+            border-left: 4px solid var(--accent-violet);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 24px 28px;
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .roi-summary strong {
+            color: var(--accent-green);
+        }
+
+        /* ============================================
+           TIMELINE
+           ============================================ */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            margin-bottom: 48px;
+            padding: 0 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 60px;
+            right: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-violet), var(--accent-green));
+            border-radius: 2px;
+        }
+
+        .timeline-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 18%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-dot {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent-violet);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 18px;
+            color: white;
+            margin-bottom: 16px;
+            box-shadow: 0 0 20px rgba(139, 124, 247, 0.3);
+        }
+
+        .timeline-step:last-child .timeline-dot {
+            background: var(--accent-green);
+            box-shadow: 0 0 20px rgba(46, 212, 122, 0.3);
+        }
+
+        .timeline-day {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--accent-violet);
+            margin-bottom: 6px;
+        }
+
+        .timeline-step:last-child .timeline-day {
+            color: var(--accent-green);
+        }
+
+        .timeline-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* Recap */
+        .recap-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .recap-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+        }
+
+        .recap-item .label { color: var(--text-secondary); }
+        .recap-item .value { font-weight: 700; color: white; }
+
+        .guarantees {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+
+        .guarantee {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding: 14px 20px;
+            background: rgba(46, 212, 122, 0.04);
+            border: 1px solid rgba(46, 212, 122, 0.1);
+            border-radius: var(--radius-sm);
+        }
+
+        .guarantee .check {
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        /* CTA */
+        .cta-box {
+            background: var(--gradient-main);
+            border-radius: var(--radius);
+            padding: 48px;
+            text-align: center;
+        }
+
+        .cta-box h3 {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .cta-box p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 28px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 36px;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-white {
+            background: white;
+            color: #0c0b1d;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        .btn-primary {
+            background: var(--gradient-main);
+            color: white;
+            box-shadow: 0 4px 24px rgba(139, 124, 247, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(139, 124, 247, 0.6);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 32px 0;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-card);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .section { padding: 64px 0; }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+            }
+
+            .constat-grid,
+            .pricing-grid,
+            .roi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .constat-features,
+            .qualif-grid,
+            .projection-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pipeline-step {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .pipeline-label {
+                text-align: left;
+                justify-content: flex-start;
+            }
+
+            .pipeline-bar {
+                width: 100% !important;
+            }
+
+            .pipeline-count {
+                text-align: left;
+            }
+
+            .timeline {
+                flex-direction: column;
+                gap: 32px;
+                align-items: flex-start;
+            }
+
+            .timeline::before { display: none; }
+
+            .timeline-step {
+                width: 100%;
+                flex-direction: row;
+                text-align: left;
+                gap: 16px;
+            }
+
+            .recap-grid,
+            .guarantees {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar-links { display: none; }
+
+            .cost-table { font-size: 13px; }
+            .cost-table thead th,
+            .cost-table tbody td { padding: 12px; }
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-logo">VOCALIS.PRO</div>
+            <ul class="navbar-links">
+                <li><a href="#constat">Le constat</a></li>
+                <li><a href="#comment-ca-marche">Comment ca marche</a></li>
+                <li><a href="#demarrage" class="navbar-cta">Demarrer</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         01 — HERO
+         ============================================ -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="section-label">Solution Growth B2B &mdash; Recouvrement</span>
+                </div>
+                <h1 class="hero-title">
+                    Votre machine<br>a prospects<br><span class="hero-highlight">qualifies</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Systeme automatise qui detecte, qualifie et contacte des entreprises
+                    avec des impayes &ge; 400&euro; &mdash; en continu, sans intervention de votre equipe.
+                </p>
+
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">1 000</div>
+                        <div class="hero-stat-label">Prospects qualifies<br>livres chaque mois</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">20-50</div>
+                        <div class="hero-stat-label">RDVs generes<br>par mois</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">J+7</div>
+                        <div class="hero-stat-label">Machine operationnelle<br>des la 1ere semaine</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         02 — LE CONSTAT
+         ============================================ -->
+    <section class="section" id="constat">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">01 &mdash; Le constat</span>
+                <h2 class="section-title">Votre defi actuel</h2>
+                <p class="section-subtitle">
+                    Trouver des entreprises avec de vraies creances impayees, au bon moment, sans y passer des heures.
+                </p>
+            </div>
+
+            <div class="constat-grid reveal">
+                <div class="constat-card before">
+                    <div class="constat-card-title">&#10007; Situation actuelle</div>
+                    <ul class="constat-list">
+                        <li>
+                            <span class="icon">&#128184;</span>
+                            <span><strong>Call center classique</strong> &mdash; leads froids, sans qualification sur les impayes reels</span>
+                        </li>
+                        <li>
+                            <span class="icon">&#127919;</span>
+                            <span><strong>Aucun ciblage sectoriel</strong> &mdash; vous contactez des entreprises qui n'ont peut-etre pas d'impayes</span>
+                        </li>
+                        <li>
+                            <span class="icon">&#128200;</span>
+                            <span><strong>Taux de closing faible</strong> &mdash; vos commerciaux perdent du temps sur des prospects non qualifies</span>
+                        </li>
+                        <li>
+                            <span class="icon">&#128260;</span>
+                            <span><strong>Non scalable</strong> &mdash; doubler le volume = doubler le budget call center</span>
+                        </li>
+                        <li>
+                            <span class="icon">&#128203;</span>
+                            <span><strong>Aucune donnee enrichie</strong> livree &mdash; pas d'email direct ni de telephone du decideur</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="constat-card after">
+                    <div class="constat-card-title">&#10003; Avec notre solution</div>
+                    <ul class="constat-list">
+                        <li>
+                            <span class="icon">&#128225;</span>
+                            <span><strong>Signaux reels d'impayes</strong> detectes automatiquement &mdash; BODACC, Infogreffe, LinkedIn</span>
+                        </li>
+                        <li>
+                            <span class="icon">&#129302;</span>
+                            <span><strong>Chaque prospect score par IA</strong> &mdash; seules les entreprises vraiment a risque sont contactees</span>
+                        </li>
+                        <li>
+                            <span class="icon">&#128231;</span>
+                            <span><strong>Email et telephone du decideur</strong> livres avec chaque lead &mdash; vos commerciaux appellent directement</span>
+                        </li>
+                        <li>
+                            <span class="icon">&#9889;</span>
+                            <span><strong>Sequence d'approche automatique</strong> &mdash; 5 points de contact personnalises par prospect</span>
+                        </li>
+                        <li>
+                            <span class="icon">&#128202;</span>
+                            <span><strong>Dashboard en temps reel</strong> &mdash; vous voyez chaque lead, son score et son statut</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="constat-features reveal">
+                <div class="constat-feature">
+                    <div class="constat-feature-icon">&#127959;</div>
+                    <h4>Secteurs prioritaires</h4>
+                    <p>BTP, Transport, CHR, Agences, E-commerce &mdash; les secteurs avec les taux d'impayes les plus eleves.</p>
+                </div>
+                <div class="constat-feature">
+                    <div class="constat-feature-icon">&#128205;</div>
+                    <h4>Geo-ciblage precis</h4>
+                    <p>Ciblage par ville, departement ou region. Votre zone de chalandise, rien d'autre.</p>
+                </div>
+                <div class="constat-feature">
+                    <div class="constat-feature-icon">&#128188;</div>
+                    <h4>Profil decideur</h4>
+                    <p>Dirigeant, DAF ou comptable &mdash; on cible la bonne personne selon la taille de l'entreprise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         03 — COMMENT CA MARCHE
+         ============================================ -->
+    <section class="section" id="comment-ca-marche" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">02 &mdash; Comment ca marche</span>
+                <h2 class="section-title">Du signal d'impaye au <span class="gradient-text">RDV confirme</span></h2>
+                <p class="section-subtitle">
+                    Un pipeline entierement automatise. Votre equipe ne recoit que les prospects chauds, prets a etre appeles.
+                </p>
+            </div>
+
+            <div class="pipeline reveal">
+                <div class="pipeline-step">
+                    <div class="pipeline-label">
+                        <span class="icon">&#128225;</span> Detection signaux
+                    </div>
+                    <div class="pipeline-bar pipeline-bar-1">
+                        BODACC &middot; Infogreffe &middot; LinkedIn &middot; Societe.com &middot; Tribunaux
+                    </div>
+                    <div class="pipeline-count"><strong>~2 000</strong> signaux</div>
+                </div>
+
+                <div class="pipeline-step">
+                    <div class="pipeline-label">
+                        <span class="icon">&#128269;</span> Collecte &amp; enrichissement
+                    </div>
+                    <div class="pipeline-bar pipeline-bar-2">
+                        Nom &middot; Societe &middot; Secteur &middot; CA &middot; Email direct &middot; Telephone
+                    </div>
+                    <div class="pipeline-count"><strong>~1 500</strong> contacts</div>
+                </div>
+
+                <div class="pipeline-step">
+                    <div class="pipeline-label">
+                        <span class="icon">&#129302;</span> Scoring IA
+                    </div>
+                    <div class="pipeline-bar pipeline-bar-3">
+                        Analyse secteur &middot; Montant estime &middot; Signal detecte &middot; Score 0-100
+                    </div>
+                    <div class="pipeline-count"><strong>~1 000</strong> qualifies</div>
+                </div>
+
+                <div class="pipeline-step">
+                    <div class="pipeline-label">
+                        <span class="icon">&#128231;</span> Approche personnalisee
+                    </div>
+                    <div class="pipeline-bar pipeline-bar-4">
+                        Sequence 5 touches &middot; Email + LinkedIn &middot; 100% personnalise
+                    </div>
+                    <div class="pipeline-count"><strong>~400</strong> contactes</div>
+                </div>
+
+                <div class="pipeline-step">
+                    <div class="pipeline-label">
+                        <span class="icon">&#128197;</span> RDVs livres
+                    </div>
+                    <div class="pipeline-bar pipeline-bar-5">
+                        Interet confirme &middot; Coordonnees verifiees &middot; Pret a appeler
+                    </div>
+                    <div class="pipeline-count"><strong>20-50</strong> RDVs</div>
+                </div>
+            </div>
+
+            <div class="glass-card reveal" style="margin-bottom: 0;">
+                <div style="font-size: 14px; font-weight: 700; color: var(--accent-violet); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">
+                    &#127919; Criteres de qualification &mdash; Seuls les leads qui cochent ces cases vous sont transmis
+                </div>
+                <div class="qualif-grid">
+                    <div class="qualif-item">
+                        <span class="qualif-check">&#10003;</span> Signal d'impaye detecte
+                    </div>
+                    <div class="qualif-item">
+                        <span class="qualif-check">&#10003;</span> Impaye estime &ge; 400&euro;
+                    </div>
+                    <div class="qualif-item">
+                        <span class="qualif-check">&#10003;</span> Secteur a risque confirme
+                    </div>
+                    <div class="qualif-item">
+                        <span class="qualif-check">&#10003;</span> Email decideur verifie
+                    </div>
+                    <div class="qualif-item">
+                        <span class="qualif-check">&#10003;</span> Telephone direct disponible
+                    </div>
+                    <div class="qualif-item">
+                        <span class="qualif-check">&#10003;</span> Score IA &ge; 70 / 100
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         06 — DEMARRAGE
+         ============================================ -->
+    <section class="section" id="demarrage">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">05 &mdash; Demarrage</span>
+                <h2 class="section-title">Operationnel en <span class="gradient-text">7 jours</span></h2>
+                <p class="section-subtitle">
+                    Une fois la commande confirmee, votre machine est configuree, testee et lancee sous une semaine.
+                </p>
+            </div>
+
+            <div class="timeline reveal">
+                <div class="timeline-step">
+                    <div class="timeline-dot">1</div>
+                    <div>
+                        <div class="timeline-day">J+1</div>
+                        <div class="timeline-desc">Signature &amp;<br>paiement setup</div>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-dot">2</div>
+                    <div>
+                        <div class="timeline-day">J+2</div>
+                        <div class="timeline-desc">Briefing cibles<br>secteurs &amp; zones</div>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-dot">3</div>
+                    <div>
+                        <div class="timeline-day">J+4</div>
+                        <div class="timeline-desc">Configuration<br>&amp; parametrage IA</div>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-dot">4</div>
+                    <div>
+                        <div class="timeline-day">J+6</div>
+                        <div class="timeline-desc">Tests &amp; validation<br>avec vous</div>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-dot">&#10003;</div>
+                    <div>
+                        <div class="timeline-day">J+7</div>
+                        <div class="timeline-desc">Go Live &#10003;<br>Premiers leads</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guarantees reveal">
+                <div class="guarantee">
+                    <span class="check">&#10003;</span> Rapport de performance mensuel complet
+                </div>
+                <div class="guarantee">
+                    <span class="check">&#10003;</span> Acces dashboard temps reel inclus
+                </div>
+                <div class="guarantee">
+                    <span class="check">&#10003;</span> Optimisation gratuite si volume insuffisant
+                </div>
+                <div class="guarantee">
+                    <span class="check">&#10003;</span> Support prioritaire sous 24h ouvrees
+                </div>
+                <div class="guarantee">
+                    <span class="check">&#10003;</span> Vos donnees leads vous appartiennent
+                </div>
+                <div class="guarantee">
+                    <span class="check">&#10003;</span> Conformite RGPD assuree
+                </div>
+            </div>
+
+            <div class="cta-box reveal">
+                <h3>Pret a demarrer ?</h3>
+                <p>Votre machine a leads sera operationnelle des la semaine prochaine.</p>
+                <a href="#" class="btn btn-white">&#8594; Valider la proposition</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>Proposition Commerciale &mdash; Machine a Leads Recouvrement &middot; Confidentiel &middot; Mars 2026</p>
+            <p style="margin-top: 8px;">Powered by <a href="https://vocalis.pro" target="_blank" style="color: var(--accent-violet);">VOCALIS.PRO</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(12, 11, 29, 0.95)';
+            } else {
+                navbar.style.background = 'rgba(12, 11, 29, 0.85)';
+            }
+        });
+    </script>
+</body>
+</html>

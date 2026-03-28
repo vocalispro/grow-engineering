@@ -1,0 +1,2766 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocalis AI Assurance | Votre Agent Vocal IA pour Courtiers & Compagnies d'Assurance</title>
+    <meta name="description" content="Automatisez vos appels d'assurance avec Vocalis AI : relance de contrats, suivi sinistres, devis immediats, renouvellements. +30% de renouvellement, 24h/24.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Vocalis AI | Agent Vocal IA pour l'Assurance">
+    <meta property="og:description" content="Votre agent vocal IA qui gere vos appels clients, relances de contrats et suivi sinistres 24h/24. +30% de renouvellement.">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0A0A0F;
+            --bg-secondary: #12121A;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --accent-violet: #6C5CE7;
+            --accent-cyan: #00D2FF;
+            --accent-green: #00E88F;
+            --accent-red: #FF4757;
+            --accent-orange: #FF6B35;
+            --accent-gold: #F0C27F;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0B0;
+            --text-muted: #6B6B80;
+            --gradient-main: linear-gradient(135deg, #1B3A6B, #00D2FF);
+            --gradient-warm: linear-gradient(135deg, #F0C27F, #FC5C7D);
+            --gradient-insurance: linear-gradient(135deg, #0F2027, #203A43, #2C5364);
+            --font-heading: 'Space Grotesk', 'Inter', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --max-width: 1200px;
+            --radius: 16px;
+            --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        /* ============================================
+           UTILITY CLASSES
+           ============================================ */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .gradient-text {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-text-warm {
+            background: var(--gradient-warm);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-text-gold {
+            background: linear-gradient(135deg, #F0C27F, #FC5C7D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(27, 58, 107, 0.2);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--accent-cyan);
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-main);
+            color: white;
+            box-shadow: 0 4px 24px rgba(27, 58, 107, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 210, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-card);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 210, 255, 0.1);
+        }
+
+        .btn-large {
+            padding: 20px 40px;
+            font-size: 18px;
+            border-radius: 12px;
+        }
+
+        /* ============================================
+           GLASS CARD
+           ============================================ */
+        .glass-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius);
+            padding: 32px;
+            backdrop-filter: blur(20px);
+            transition: var(--transition);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 210, 255, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 210, 255, 0.1);
+        }
+
+        /* ============================================
+           ANIMATED BACKGROUND
+           ============================================ */
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .glow-orb-blue { background: #1B3A6B; width: 400px; height: 400px; }
+        .glow-orb-cyan { background: var(--accent-cyan); width: 300px; height: 300px; }
+
+        /* ============================================
+           NAVBAR
+           ============================================ */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-card);
+            transition: var(--transition);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-logo { display: flex; flex-direction: column; }
+        .navbar-logo-main { font-family: var(--font-heading); font-size: 20px; font-weight: 700; }
+        .navbar-logo-sub { font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px; }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .navbar-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .navbar-links a:hover { color: var(--text-primary); }
+
+        .navbar-cta { display: flex; align-items: center; gap: 16px; }
+        .navbar-cta .btn { padding: 10px 24px; font-size: 14px; }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-toggle span {
+            width: 24px; height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            padding-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .glow-orb-blue { top: -100px; right: -200px; }
+        .hero .glow-orb-cyan { bottom: -100px; left: -150px; }
+        .hero .container { position: relative; z-index: 1; }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(27, 58, 107, 0.2);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--accent-cyan);
+            margin-bottom: 32px;
+            animation: fadeInDown 0.6s ease;
+        }
+
+        .hero-badge .pulse-dot {
+            width: 8px; height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.6s ease 0.1s both;
+        }
+
+        .hero-description {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 48px;
+            animation: fadeInUp 0.6s ease 0.3s both;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 48px;
+            animation: fadeInUp 0.6s ease 0.4s both;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .hero-stat .check { color: var(--accent-green); font-weight: 700; }
+
+        /* KPI Cards Hero */
+        .hero-kpis {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 0.6s ease 0.5s both;
+        }
+
+        .hero-kpi {
+            background: rgba(27, 58, 107, 0.15);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: var(--radius);
+            padding: 24px 16px;
+            text-align: center;
+        }
+
+        .hero-kpi-number {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .hero-kpi-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .hero-trust {
+            font-size: 14px;
+            color: var(--text-muted);
+            animation: fadeInUp 0.6s ease 0.6s both;
+        }
+
+        /* ============================================
+           PROBLEMS SECTION
+           ============================================ */
+        .problems { background: var(--bg-secondary); }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .problem-card { text-align: center; padding: 40px 24px; }
+
+        .problem-card .icon { font-size: 48px; margin-bottom: 20px; }
+
+        .problem-card h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--accent-red);
+        }
+
+        .problem-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           BEFORE/AFTER COMPARISON
+           ============================================ */
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .before-card, .after-card {
+            border-radius: var(--radius);
+            padding: 36px;
+        }
+
+        .before-card {
+            background: rgba(255, 71, 87, 0.05);
+            border: 1px solid rgba(255, 71, 87, 0.2);
+        }
+
+        .after-card {
+            background: rgba(0, 232, 143, 0.05);
+            border: 1px solid rgba(0, 232, 143, 0.2);
+        }
+
+        .before-card h3 {
+            color: var(--accent-red);
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .after-card h3 {
+            color: var(--accent-green);
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ba-list {
+            list-style: none;
+        }
+
+        .ba-list li {
+            padding: 10px 0;
+            font-size: 15px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5;
+        }
+
+        .ba-list li .ba-icon {
+            flex-shrink: 0;
+            font-size: 16px;
+            margin-top: 2px;
+        }
+
+        /* ============================================
+           CONVERSATION
+           ============================================ */
+        .conversation-wrapper { max-width: 650px; margin: 0 auto; }
+
+        .conversation-bubble {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .conversation-bubble:nth-child(1) { animation-delay: 0.1s; }
+        .conversation-bubble:nth-child(2) { animation-delay: 0.5s; }
+        .conversation-bubble:nth-child(3) { animation-delay: 0.9s; }
+        .conversation-bubble:nth-child(4) { animation-delay: 1.3s; }
+        .conversation-bubble:nth-child(5) { animation-delay: 1.7s; }
+        .conversation-bubble:nth-child(6) { animation-delay: 2.1s; }
+
+        .conversation-bubble.human { flex-direction: row-reverse; }
+
+        .bubble-avatar {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .bubble-avatar.ai { background: var(--gradient-main); }
+        .bubble-avatar.client { background: rgba(255, 255, 255, 0.1); }
+
+        .bubble-content {
+            max-width: 80%;
+            padding: 16px 20px;
+            border-radius: 16px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .conversation-bubble:not(.human) .bubble-content {
+            background: rgba(27, 58, 107, 0.2);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-top-left-radius: 4px;
+        }
+
+        .conversation-bubble.human .bubble-content {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-card);
+            border-top-right-radius: 4px;
+        }
+
+        .conversation-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           FEATURES
+           ============================================ */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card { padding: 36px; }
+
+        .feature-card .icon-wrapper {
+            width: 56px; height: 56px;
+            background: rgba(27, 58, 107, 0.2);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           PIPELINE / FUNNEL DIAGRAM
+           ============================================ */
+        .pipeline-section { background: var(--bg-secondary); }
+
+        .pipeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .pipeline-step {
+            display: grid;
+            grid-template-columns: 60px 1fr auto;
+            align-items: center;
+            gap: 24px;
+            padding: 24px 0;
+            position: relative;
+        }
+
+        .pipeline-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 29px;
+            bottom: 0;
+            width: 2px;
+            height: 24px;
+            background: linear-gradient(180deg, var(--accent-cyan), transparent);
+            transform: translateY(100%);
+            z-index: 0;
+        }
+
+        .pipeline-number {
+            width: 60px; height: 60px;
+            background: var(--gradient-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 700;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+
+        .pipeline-info h3 {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .pipeline-info p {
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .pipeline-bar-container {
+            width: 200px;
+        }
+
+        .pipeline-bar {
+            height: 32px;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pipeline-bar-fill {
+            height: 100%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            color: white;
+            transition: width 1.5s ease;
+        }
+
+        /* ============================================
+           CHARTS
+           ============================================ */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .chart-card {
+            padding: 32px;
+        }
+
+        .chart-card h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        /* Bar Chart */
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 20px;
+            height: 200px;
+            padding-bottom: 30px;
+            position: relative;
+        }
+
+        .bar-chart::after {
+            content: '';
+            position: absolute;
+            bottom: 29px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--border-card);
+        }
+
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bar {
+            width: 48px;
+            border-radius: 6px 6px 0 0;
+            position: relative;
+            transition: height 1.5s ease;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 60px;
+        }
+
+        /* Donut Chart */
+        .donut-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .donut-chart {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .donut-center {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: var(--bg-card);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .donut-center-number {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .donut-center-label {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .donut-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .donut-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .donut-legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           CASE STUDIES
+           ============================================ */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .case-card {
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--gradient-main);
+        }
+
+        .case-sector {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(0, 210, 255, 0.1);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            margin-bottom: 16px;
+        }
+
+        .case-card h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .case-card .case-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .case-results {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .case-result {
+            background: rgba(27, 58, 107, 0.15);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .case-result-value {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--accent-green);
+        }
+
+        .case-result-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .case-quote {
+            margin-top: 16px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid var(--accent-cyan);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .case-author {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* ============================================
+           STATS / RESULTS
+           ============================================ */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: clamp(40px, 5vw, 56px);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* ============================================
+           COMPARISON TABLE
+           ============================================ */
+        .comparison { background: var(--bg-secondary); }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 18px 24px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-card);
+        }
+
+        .comparison-table thead th {
+            background: rgba(255, 255, 255, 0.03);
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .comparison-table thead th:last-child {
+            background: rgba(27, 58, 107, 0.15);
+            border-bottom: 2px solid var(--accent-cyan);
+        }
+
+        .comparison-table tbody td:first-child {
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .comparison-table tbody td:nth-child(2) { color: var(--text-muted); }
+
+        .comparison-table tbody td:last-child {
+            background: rgba(27, 58, 107, 0.05);
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .comparison-table tr:last-child td { border-bottom: none; }
+
+        .table-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        /* ============================================
+           ROI CALCULATOR
+           ============================================ */
+        .roi-section {
+            background: var(--bg-secondary);
+        }
+
+        .roi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        .roi-card {
+            padding: 36px;
+            border-radius: var(--radius);
+        }
+
+        .roi-card.before {
+            background: rgba(255, 71, 87, 0.05);
+            border: 1px solid rgba(255, 71, 87, 0.15);
+        }
+
+        .roi-card.after {
+            background: rgba(0, 232, 143, 0.05);
+            border: 1px solid rgba(0, 232, 143, 0.15);
+        }
+
+        .roi-card h3 {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .roi-card.before h3 { color: var(--accent-red); }
+        .roi-card.after h3 { color: var(--accent-green); }
+
+        .roi-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+        }
+
+        .roi-line:last-child { border-bottom: none; }
+
+        .roi-line-label { color: var(--text-secondary); }
+
+        .roi-line-value { font-weight: 700; }
+
+        .roi-highlight {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .roi-highlight-card {
+            background: rgba(27, 58, 107, 0.15);
+            border: 1px solid rgba(0, 210, 255, 0.15);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+        }
+
+        .roi-highlight-number {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .roi-highlight-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* ============================================
+           PRICING
+           ============================================ */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            align-items: start;
+        }
+
+        .pricing-card {
+            padding: 40px 32px;
+            text-align: center;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent-cyan);
+            transform: scale(1.05);
+            box-shadow: 0 0 60px rgba(0, 210, 255, 0.1);
+        }
+
+        .pricing-card.featured::before {
+            content: 'POPULAIRE';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-main);
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .pricing-card .plan-name {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        .pricing-card .plan-price {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .pricing-card .plan-period {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .pricing-card .plan-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .pricing-card .plan-features li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-card .plan-features li .check-icon {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        .pricing-card .btn { width: 100%; }
+
+        .pricing-note {
+            text-align: center;
+            margin-top: 32px;
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        .pricing-note strong { color: var(--accent-cyan); }
+
+        /* ============================================
+           TIMELINE DEPLOYMENT
+           ============================================ */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: 40px;
+            right: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+            opacity: 0.3;
+        }
+
+        .timeline-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 120px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-dot {
+            width: 56px;
+            height: 56px;
+            background: var(--gradient-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .timeline-dot.done {
+            background: var(--accent-green);
+        }
+
+        .timeline-day {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 4px;
+        }
+
+        .timeline-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* ============================================
+           FAQ
+           ============================================ */
+        .faq { background: var(--bg-secondary); }
+
+        .faq-list { max-width: 750px; margin: 0 auto; }
+
+        .faq-item { border-bottom: 1px solid var(--border-card); }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 0;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: left;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover { color: var(--accent-cyan); }
+
+        .faq-question .faq-icon {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+            color: var(--accent-cyan);
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+
+        .faq-item.active .faq-question .faq-icon { transform: rotate(45deg); }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding-bottom: 24px;
+        }
+
+        .faq-answer p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        .cta-section { position: relative; overflow: hidden; }
+
+        .cta-card {
+            max-width: 750px;
+            margin: 0 auto;
+            background: rgba(27, 58, 107, 0.1);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 24px;
+            padding: 64px 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at center, rgba(0, 210, 255, 0.06), transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-card .section-title { position: relative; z-index: 1; }
+
+        .cta-card .section-subtitle {
+            position: relative;
+            z-index: 1;
+            margin: 0 auto 40px;
+        }
+
+        .cta-form { position: relative; z-index: 1; max-width: 500px; margin: 0 auto; }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-group { position: relative; }
+        .form-group.full-width { grid-column: 1 / -1; }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 15px;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-input::placeholder { color: var(--text-muted); }
+
+        .form-input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.15);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 15px;
+            transition: var(--transition);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .form-select option {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .form-submit { width: 100%; margin-top: 8px; }
+
+        .form-trust {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .form-trust span {
+            font-size: 13px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .form-success { display: none; text-align: center; padding: 40px; }
+        .form-success.show { display: block; }
+        .form-success .success-icon { font-size: 64px; margin-bottom: 16px; }
+        .form-success h3 { font-family: var(--font-heading); font-size: 24px; margin-bottom: 8px; }
+        .form-success p { color: var(--text-secondary); }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 64px 0 32px;
+            border-top: 1px solid var(--border-card);
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand .navbar-logo { margin-bottom: 16px; }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+
+        .footer-col ul li a {
+            font-size: 14px;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover { color: var(--accent-cyan); }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid var(--border-card);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p { font-size: 13px; color: var(--text-muted); }
+        .footer-bottom a { color: var(--accent-cyan); }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+                margin: 0 auto;
+            }
+            .pricing-card.featured { transform: scale(1); }
+            .footer-main { grid-template-columns: 1fr 1fr; }
+            .cases-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+            .roi-highlight { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: 72px 0; }
+            .navbar-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: rgba(10, 10, 15, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 24px;
+                border-bottom: 1px solid var(--border-card);
+            }
+            .navbar-links.active { display: flex; }
+            .navbar-cta { display: none; }
+            .mobile-toggle { display: flex; }
+            .problems-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-stats { flex-direction: column; gap: 12px; }
+            .hero-cta { flex-direction: column; }
+            .hero-cta .btn { width: 100%; }
+            .hero-kpis { grid-template-columns: 1fr; max-width: 280px; }
+            .before-after { grid-template-columns: 1fr; }
+            .charts-grid { grid-template-columns: 1fr; }
+            .roi-grid { grid-template-columns: 1fr; }
+            .comparison-table { font-size: 13px; }
+            .comparison-table th, .comparison-table td { padding: 12px 10px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .cta-card { padding: 40px 24px; }
+            .footer-main { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .table-wrapper { overflow-x: auto; }
+            .timeline { flex-direction: column; align-items: flex-start; gap: 24px; }
+            .timeline::before { display: none; }
+            .timeline-step { flex-direction: row; width: 100%; text-align: left; gap: 16px; }
+            .pipeline-bar-container { width: 120px; }
+            .roi-highlight { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .stat-card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Grid -->
+    <div class="bg-grid"></div>
+
+    <!-- ============================================
+         NAVBAR
+         ============================================ -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="navbar-logo">
+                <span class="navbar-logo-main">
+                    <span class="gradient-text">Vocalis AI</span> Assurance
+                </span>
+                <span class="navbar-logo-sub">www.vocalis.pro</span>
+            </a>
+
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="#constat">Le Constat</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#cas-clients">Cas Clients</a></li>
+                <li><a href="#roi">ROI</a></li>
+                <li><a href="#tarifs">Tarifs</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+
+            <div class="navbar-cta">
+                <a href="#contact" class="btn btn-primary">Demo Gratuite</a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         HERO
+         ============================================ -->
+    <section class="hero section">
+        <div class="glow-orb glow-orb-blue"></div>
+        <div class="glow-orb glow-orb-cyan"></div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="pulse-dot"></span>
+                    Solution IA Vocale pour l'Assurance
+                </div>
+
+                <h1>
+                    Votre Agent Vocal IA<br>
+                    pour <span class="gradient-text">l'Assurance</span><br>
+                    24h/24, 7j/7
+                </h1>
+
+                <p class="hero-description">
+                    Relance de contrats, suivi sinistres, devis immediats, renouvellements automatiques.
+                    Vocalis gere vos appels clients avec une <strong>fluidite naturelle</strong> &mdash; pendant que vos equipes
+                    se concentrent sur la vente et le conseil.
+                </p>
+
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary btn-large">Demander une Demo</a>
+                    <a href="#cas-clients" class="btn btn-secondary btn-large">Voir les Cas Clients</a>
+                </div>
+
+                <div class="hero-kpis">
+                    <div class="hero-kpi">
+                        <div class="hero-kpi-number gradient-text">+30%</div>
+                        <div class="hero-kpi-label">Taux de renouvellement</div>
+                    </div>
+                    <div class="hero-kpi">
+                        <div class="hero-kpi-number gradient-text">-60%</div>
+                        <div class="hero-kpi-label">Cout par appel</div>
+                    </div>
+                    <div class="hero-kpi">
+                        <div class="hero-kpi-number gradient-text">5x ROI</div>
+                        <div class="hero-kpi-label">Des le 3eme mois</div>
+                    </div>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="check">&#10003;</span> Multilingue FR / EN / DE / IT
+                    </div>
+                    <div class="hero-stat">
+                        <span class="check">&#10003;</span> Conforme RGPD & DPA
+                    </div>
+                    <div class="hero-stat">
+                        <span class="check">&#10003;</span> Integration CRM native
+                    </div>
+                </div>
+
+                <p class="hero-trust">
+                    Solution deploye par <strong>Vocalis AI</strong> &mdash; vocalis.pro
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CONSTAT / PROBLEMS
+         ============================================ -->
+    <section class="section problems" id="constat">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">01 &mdash; Le Constat</span>
+                <h2 class="section-title">
+                    Votre Defi Actuel dans<br>
+                    <span class="gradient-text-warm">l'Assurance</span>
+                </h2>
+                <p class="section-subtitle">
+                    Les courtiers et compagnies d'assurance font face a des defis operationnels majeurs qui impactent directement leur rentabilite.
+                </p>
+            </div>
+
+            <div class="problems-grid">
+                <div class="glass-card problem-card reveal">
+                    <div class="icon">&#128222;</div>
+                    <h3>70% d'Appels Manques</h3>
+                    <p>Vos clients appellent en dehors des heures de bureau. Chaque appel manque est un contrat potentiellement perdu.</p>
+                </div>
+
+                <div class="glass-card problem-card reveal">
+                    <div class="icon">&#128260;</div>
+                    <h3>Renouvellements Oublies</h3>
+                    <p>Sans relance systematique, 15 a 25% de vos contrats ne sont pas renouveles. Un manque a gagner colossal.</p>
+                </div>
+
+                <div class="glass-card problem-card reveal">
+                    <div class="icon">&#9200;</div>
+                    <h3>Sinistres en Attente</h3>
+                    <p>Les assures attendent des heures pour un suivi sinistre. La frustration monte, la satisfaction client chute.</p>
+                </div>
+
+                <div class="glass-card problem-card reveal">
+                    <div class="icon">&#128184;</div>
+                    <h3>Cout Secretariat Eleve</h3>
+                    <p>2 a 3 employes temps plein pour gerer le standard telephonique. 80 000 a 120 000&#8364;/an de masse salariale.</p>
+                </div>
+
+                <div class="glass-card problem-card reveal">
+                    <div class="icon">&#128200;</div>
+                    <h3>Devis Non Convertis</h3>
+                    <p>60% des demandes de devis restent sans suite faute de relance rapide. Le prospect signe ailleurs.</p>
+                </div>
+
+                <div class="glass-card problem-card reveal">
+                    <div class="icon">&#128552;</div>
+                    <h3>Pics Saisonniers</h3>
+                    <p>Tempetes, inondations, echeances annuelles : votre equipe est submergee aux pires moments.</p>
+                </div>
+            </div>
+
+            <!-- Before / After -->
+            <div class="before-after reveal" style="margin-top: 64px;">
+                <div class="before-card">
+                    <h3>&#10060; SANS VOCALIS AI</h3>
+                    <ul class="ba-list">
+                        <li><span class="ba-icon">&#128532;</span> Appels non repondus le soir et le weekend</li>
+                        <li><span class="ba-icon">&#128184;</span> 50-80&#8364; par RDV (call center classique)</li>
+                        <li><span class="ba-icon">&#128200;</span> Taux de renouvellement : 65-70%</li>
+                        <li><span class="ba-icon">&#9200;</span> Delai moyen de rappel sinistre : 48h</li>
+                        <li><span class="ba-icon">&#128260;</span> Relance devis manuelle et oubliee</li>
+                        <li><span class="ba-icon">&#128680;</span> Aucune donnee structuree sur les appels</li>
+                    </ul>
+                </div>
+
+                <div class="after-card">
+                    <h3>&#9989; AVEC VOCALIS AI</h3>
+                    <ul class="ba-list">
+                        <li><span class="ba-icon">&#128222;</span> 100% des appels pris, 24h/24, 7j/7</li>
+                        <li><span class="ba-icon">&#128176;</span> 0,15&#8364; par minute d'appel IA</li>
+                        <li><span class="ba-icon">&#128200;</span> Taux de renouvellement : 85-95%</li>
+                        <li><span class="ba-icon">&#9889;</span> Rappel sinistre automatique &lt; 5min</li>
+                        <li><span class="ba-icon">&#127919;</span> Relance devis automatique J+1, J+3, J+7</li>
+                        <li><span class="ba-icon">&#128202;</span> Dashboard temps reel + analytics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SOLUTION / CONVERSATION
+         ============================================ -->
+    <section class="section" id="solution">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">02 &mdash; Comment ca Marche</span>
+                <h2 class="section-title">
+                    Votre Agent Vocal en Action :<br>
+                    <span class="gradient-text">Scenario Renouvellement</span>
+                </h2>
+                <p class="section-subtitle">
+                    Voyez comment Vocalis AI gere un appel de relance de contrat avec naturel et efficacite.
+                </p>
+            </div>
+
+            <div class="conversation-wrapper reveal">
+                <div class="glass-card" style="padding: 40px;">
+                    <div class="conversation-bubble">
+                        <div class="bubble-avatar ai">&#129302;</div>
+                        <div>
+                            <div class="conversation-label">Vocalis AI</div>
+                            <div class="bubble-content">
+                                Bonjour Madame Leroy, je vous appelle de la part du Cabinet Durand Assurances. Votre contrat auto arrive a echeance le 15 avril. J'aurais aime faire un point avec vous sur votre couverture actuelle. Avez-vous quelques minutes ?
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conversation-bubble human">
+                        <div class="bubble-avatar client">&#128100;</div>
+                        <div>
+                            <div class="conversation-label">Cliente</div>
+                            <div class="bubble-content">
+                                Oui, justement je voulais voir si mon tarif pouvait baisser, j'ai recu une offre concurrente a 580&#8364;...
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conversation-bubble">
+                        <div class="bubble-avatar ai">&#129302;</div>
+                        <div>
+                            <div class="conversation-label">Vocalis AI</div>
+                            <div class="bubble-content">
+                                Je comprends tout a fait, Madame Leroy. Votre fidelite merite une attention particuliere. Je vois dans votre dossier que vous etes sans sinistre depuis 3 ans &mdash; c'est un excellent profil. Je peux vous proposer un renouvellement a 545&#8364; avec les memes garanties, soit 35&#8364; de moins que l'offre concurrente. Souhaitez-vous que je reserve cette offre ?
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conversation-bubble human">
+                        <div class="bubble-avatar client">&#128100;</div>
+                        <div>
+                            <div class="conversation-label">Cliente</div>
+                            <div class="bubble-content">
+                                Ah oui, c'est interessant ! Vous pouvez m'envoyer le detail par email ?
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conversation-bubble">
+                        <div class="bubble-avatar ai">&#129302;</div>
+                        <div>
+                            <div class="conversation-label">Vocalis AI</div>
+                            <div class="bubble-content">
+                                C'est fait, Madame Leroy ! Vous allez recevoir le detail de l'offre a 545&#8364; sur votre email dans les prochaines minutes, avec un lien pour valider directement en ligne. Si vous avez des questions, n'hesitez pas a rappeler. Merci pour votre confiance et excellente journee !
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pipeline Diagram -->
+            <div style="margin-top: 80px;">
+                <h3 class="section-title reveal" style="text-align: center; font-size: 28px; margin-bottom: 48px;">
+                    Le Pipeline <span class="gradient-text">Vocalis AI Assurance</span>
+                </h3>
+
+                <div class="pipeline reveal">
+                    <div class="pipeline-step">
+                        <div class="pipeline-number">1</div>
+                        <div class="pipeline-info">
+                            <h3>Appel Entrant / Sortant</h3>
+                            <p>Detection automatique du motif : sinistre, devis, renouvellement, reclamation</p>
+                        </div>
+                        <div class="pipeline-bar-container">
+                            <div class="pipeline-bar" style="background: rgba(0, 210, 255, 0.1);">
+                                <div class="pipeline-bar-fill" style="width: 100%; background: var(--gradient-main);">100%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-step">
+                        <div class="pipeline-number">2</div>
+                        <div class="pipeline-info">
+                            <h3>Qualification IA</h3>
+                            <p>Analyse du dossier, historique client, scoring de priorite</p>
+                        </div>
+                        <div class="pipeline-bar-container">
+                            <div class="pipeline-bar" style="background: rgba(0, 210, 255, 0.1);">
+                                <div class="pipeline-bar-fill" style="width: 85%; background: linear-gradient(135deg, #1B3A6B, #00D2FF);">85%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-step">
+                        <div class="pipeline-number">3</div>
+                        <div class="pipeline-info">
+                            <h3>Traitement Automatise</h3>
+                            <p>Devis genere, sinistre ouvert, renouvellement propose, RDV fixe</p>
+                        </div>
+                        <div class="pipeline-bar-container">
+                            <div class="pipeline-bar" style="background: rgba(0, 232, 143, 0.1);">
+                                <div class="pipeline-bar-fill" style="width: 70%; background: linear-gradient(135deg, #00D2FF, #00E88F);">70%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-step">
+                        <div class="pipeline-number">4</div>
+                        <div class="pipeline-info">
+                            <h3>Suivi & Cloture</h3>
+                            <p>Email de confirmation, mise a jour CRM, relance si necessaire</p>
+                        </div>
+                        <div class="pipeline-bar-container">
+                            <div class="pipeline-bar" style="background: rgba(0, 232, 143, 0.1);">
+                                <div class="pipeline-bar-fill" style="width: 95%; background: var(--accent-green);">95%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FEATURES
+         ============================================ -->
+    <section class="section" id="fonctionnalites" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">03 &mdash; Fonctionnalites</span>
+                <h2 class="section-title">
+                    Tout ce dont votre Cabinet<br>
+                    a besoin pour <span class="gradient-text">Performer</span>
+                </h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="glass-card feature-card reveal">
+                    <div class="icon-wrapper">&#128222;</div>
+                    <h3>Accueil Telephonique 24/7</h3>
+                    <p>Chaque appel est pris instantanement. L'IA identifie le client, comprend sa demande et y repond ou la route vers le bon interlocuteur.</p>
+                </div>
+
+                <div class="glass-card feature-card reveal">
+                    <div class="icon-wrapper">&#128260;</div>
+                    <h3>Relance Renouvellements</h3>
+                    <p>Appels sortants automatiques 30, 15 et 7 jours avant echeance. Proposition tarifaire personnalisee. Taux de renouvellement : +30%.</p>
+                </div>
+
+                <div class="glass-card feature-card reveal">
+                    <div class="icon-wrapper">&#128679;</div>
+                    <h3>Gestion Sinistres</h3>
+                    <p>Ouverture de dossier sinistre par telephone, collecte des informations cles, envoi du recapitulatif par email. Rappel de suivi automatique.</p>
+                </div>
+
+                <div class="glass-card feature-card reveal">
+                    <div class="icon-wrapper">&#128196;</div>
+                    <h3>Devis Instantanes</h3>
+                    <p>L'IA qualifie le besoin (auto, habitation, sante, pro), collecte les informations et genere un devis en temps reel pendant l'appel.</p>
+                </div>
+
+                <div class="glass-card feature-card reveal">
+                    <div class="icon-wrapper">&#128202;</div>
+                    <h3>Dashboard & Analytics</h3>
+                    <p>Vue en temps reel : appels traites, sinistres ouverts, devis generes, renouvellements confirmes. Export PDF pour reporting client.</p>
+                </div>
+
+                <div class="glass-card feature-card reveal">
+                    <div class="icon-wrapper">&#128279;</div>
+                    <h3>Integration Metier</h3>
+                    <p>Connexion native avec vos outils : Salesforce, HubSpot, Oggo, Lya, Assurbox. API ouverte pour vos solutions internes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         GRAPHS & DATA
+         ============================================ -->
+    <section class="section" id="graphiques">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">04 &mdash; Performances</span>
+                <h2 class="section-title">
+                    Des Resultats <span class="gradient-text">Mesurables</span>
+                </h2>
+                <p class="section-subtitle">
+                    Donnees reelles de nos clients dans le secteur de l'assurance apres 6 mois de deploiement.
+                </p>
+            </div>
+
+            <div class="stats-grid reveal">
+                <div class="glass-card stat-card">
+                    <div class="stat-number gradient-text">+30%</div>
+                    <div class="stat-label">Taux de<br>renouvellement</div>
+                </div>
+
+                <div class="glass-card stat-card">
+                    <div class="stat-number gradient-text">-60%</div>
+                    <div class="stat-label">Reduction des<br>couts telephoniques</div>
+                </div>
+
+                <div class="glass-card stat-card">
+                    <div class="stat-number gradient-text">24/7</div>
+                    <div class="stat-label">Disponibilite<br>sans interruption</div>
+                </div>
+
+                <div class="glass-card stat-card">
+                    <div class="stat-number gradient-text">5x</div>
+                    <div class="stat-label">Retour sur<br>investissement</div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="charts-grid reveal">
+                <!-- Bar Chart: Taux de renouvellement -->
+                <div class="glass-card chart-card">
+                    <h3>Taux de Renouvellement</h3>
+                    <div class="bar-chart">
+                        <div class="bar-group">
+                            <div class="bar" style="height: 110px; background: rgba(255, 71, 87, 0.4);">
+                                <span class="bar-value" style="color: var(--accent-red);">65%</span>
+                            </div>
+                            <span class="bar-label">Avant Vocalis</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 155px; background: var(--gradient-main);">
+                                <span class="bar-value" style="color: var(--accent-cyan);">92%</span>
+                            </div>
+                            <span class="bar-label">Avec Vocalis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donut Chart: Repartition des appels -->
+                <div class="glass-card chart-card">
+                    <h3>Repartition des Appels Traites</h3>
+                    <div class="donut-container">
+                        <div class="donut-chart" style="background: conic-gradient(
+                            #00D2FF 0% 35%,
+                            #00E88F 35% 55%,
+                            #6C5CE7 55% 75%,
+                            #F0C27F 75% 90%,
+                            #FF6B35 90% 100%
+                        );">
+                            <div class="donut-center">
+                                <div class="donut-center-number">2 400</div>
+                                <div class="donut-center-label">appels/mois</div>
+                            </div>
+                        </div>
+                        <div class="donut-legend">
+                            <div class="donut-legend-item">
+                                <div class="donut-legend-color" style="background: #00D2FF;"></div>
+                                Renouvellements (35%)
+                            </div>
+                            <div class="donut-legend-item">
+                                <div class="donut-legend-color" style="background: #00E88F;"></div>
+                                Sinistres (20%)
+                            </div>
+                            <div class="donut-legend-item">
+                                <div class="donut-legend-color" style="background: #6C5CE7;"></div>
+                                Devis (20%)
+                            </div>
+                            <div class="donut-legend-item">
+                                <div class="donut-legend-color" style="background: #F0C27F;"></div>
+                                Renseignements (15%)
+                            </div>
+                            <div class="donut-legend-item">
+                                <div class="donut-legend-color" style="background: #FF6B35;"></div>
+                                Reclamations (10%)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bar Chart: Cout par interaction -->
+                <div class="glass-card chart-card">
+                    <h3>Cout par Interaction</h3>
+                    <div class="bar-chart">
+                        <div class="bar-group">
+                            <div class="bar" style="height: 160px; background: rgba(255, 71, 87, 0.4);">
+                                <span class="bar-value" style="color: var(--accent-red);">8,50&#8364;</span>
+                            </div>
+                            <span class="bar-label">Agent Humain</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 80px; background: rgba(255, 107, 53, 0.4);">
+                                <span class="bar-value" style="color: var(--accent-orange);">5,00&#8364;</span>
+                            </div>
+                            <span class="bar-label">Call Center</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 25px; background: var(--gradient-main);">
+                                <span class="bar-value" style="color: var(--accent-green);">0,85&#8364;</span>
+                            </div>
+                            <span class="bar-label">Vocalis AI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bar Chart: Satisfaction client -->
+                <div class="glass-card chart-card">
+                    <h3>Satisfaction Client (NPS)</h3>
+                    <div class="bar-chart">
+                        <div class="bar-group">
+                            <div class="bar" style="height: 90px; background: rgba(255, 71, 87, 0.4);">
+                                <span class="bar-value" style="color: var(--accent-red);">+22</span>
+                            </div>
+                            <span class="bar-label">Avant</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 80px; background: rgba(240, 194, 127, 0.4);">
+                                <span class="bar-value" style="color: var(--accent-gold);">M+1</span>
+                            </div>
+                            <span class="bar-label">+38</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 110px; background: rgba(0, 210, 255, 0.3);">
+                                <span class="bar-value" style="color: var(--accent-cyan);">+52</span>
+                            </div>
+                            <span class="bar-label">M+3</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 150px; background: var(--gradient-main);">
+                                <span class="bar-value" style="color: var(--accent-green);">+67</span>
+                            </div>
+                            <span class="bar-label">M+6</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CAS CLIENTS
+         ============================================ -->
+    <section class="section" id="cas-clients" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">05 &mdash; Cas Clients</span>
+                <h2 class="section-title">
+                    Ce qu'ils en <span class="gradient-text">Disent</span>
+                </h2>
+                <p class="section-subtitle">
+                    3 cabinets de courtage et compagnies d'assurance qui ont transforme leur relation client avec Vocalis AI.
+                </p>
+            </div>
+
+            <div class="cases-grid">
+                <!-- Case 1 -->
+                <div class="glass-card case-card reveal">
+                    <div class="case-sector">Courtage Auto & Habitation</div>
+                    <h3>Cabinet Martin & Associes</h3>
+                    <p class="case-description">
+                        Cabinet de courtage regional (12 000 contrats). Probleme : 40% des appels non repondus en periode de pointe. Renouvellements en baisse.
+                    </p>
+                    <div class="case-results">
+                        <div class="case-result">
+                            <div class="case-result-value">+27%</div>
+                            <div class="case-result-label">Renouvellements</div>
+                        </div>
+                        <div class="case-result">
+                            <div class="case-result-value">-55%</div>
+                            <div class="case-result-label">Couts telephoniques</div>
+                        </div>
+                        <div class="case-result">
+                            <div class="case-result-value">100%</div>
+                            <div class="case-result-label">Appels repondus</div>
+                        </div>
+                        <div class="case-result">
+                            <div class="case-result-value">3 mois</div>
+                            <div class="case-result-label">ROI atteint</div>
+                        </div>
+                    </div>
+                    <div class="case-quote">
+                        "Vocalis nous a permis de passer de 65% a 92% de taux de renouvellement. L'IA gere les relances standard et mon equipe se concentre sur le conseil et la vente de nouveaux contrats."
+                        <div class="case-author">&mdash; Pierre Martin, Dirigeant</div>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="glass-card case-card reveal">
+                    <div class="case-sector">Assurance Sante & Prevoyance</div>
+                    <h3>MutualSante Group</h3>
+                    <p class="case-description">
+                        Mutuelle regionale (45 000 adherents). Probleme : standard sature, delais de reponse sinistres trop longs, NPS en chute.
+                    </p>
+                    <div class="case-results">
+                        <div class="case-result">
+                            <div class="case-result-value">+45 pts</div>
+                            <div class="case-result-label">NPS (de +22 a +67)</div>
+                        </div>
+                        <div class="case-result">
+                            <div class="case-result-value">&lt;5 min</div>
+                            <div class="case-result-label">Delai rappel sinistre</div>
+                        </div>
+                        <div class="case-result">
+                            <div class="case-result-value">-63%</div>
+                            <div class="case-result-label">Couts standard</div>
+                        </div>
+                        <div class="case-result">
+                            <div class="case-result-value">2 400</div>
+                            <div class="case-result-label">Appels/mois geres</div>
+                        </div>
+                    </div>
+                    <div class="case-quote">
+                        "Nos adherents sont ravis. L'IA prend l'appel immediatement, ouvre le dossier sinistre et envoie la confirmation par email. Le tout en moins de 3 minutes."
+                        <div class="case-author">&mdash; Sophie Lefevre, Directrice Service Client</div>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="glass-card case-card reveal">
+                    <div class="case-sector">Courtier Assurance Pro & Entreprise</div>
+                    <h3>Assurances Riviera</h3>
+                    <p class="case-description">
+                        Cabinet de courtage pro/entreprise (Cote d'Azur, 8 000 contrats). Probleme : devis non relances, prospects perdus, surcharge administrative.
+                    </p>
+                    <div class="case-results">
+                        <div class="case-result">
+                            <div class="case-result-value">+38%</div>
+                            <div class="case-result-label">Conversion devis</div>
+                        </div>
+                        <div class="case-result">
+                            <div class="case-result-value">120</div>
+                            <div class="case-result-label">RDVs/mois generes</div>
+                        </div>
+                        <div class="case-result">
+                            <div class="case-result-value">7x ROI</div>
+                            <div class="case-result-label">Retour investissement</div>
+                        </div>
+                        <div class="case-result">
+                            <div class="case-result-value">J+7</div>
+                            <div class="case-result-label">Deploiement</div>
+                        </div>
+                    </div>
+                    <div class="case-quote">
+                        "Avant Vocalis, 60% de nos devis tombaient dans l'oubli. Aujourd'hui, chaque demande est relancee automatiquement a J+1, J+3 et J+7. Notre conversion a explose."
+                        <div class="case-author">&mdash; Marc Dupont, Directeur Commercial</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         COMPARISON TABLE
+         ============================================ -->
+    <section class="section comparison" id="comparaison">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">06 &mdash; Comparaison</span>
+                <h2 class="section-title">
+                    Standard Classique vs <span class="gradient-text">Vocalis AI</span>
+                </h2>
+            </div>
+
+            <div class="table-wrapper reveal">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Critere</th>
+                            <th>Standard / Call Center</th>
+                            <th>Vocalis AI Assurance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Disponibilite</td>
+                            <td>9h-18h, jours ouvres</td>
+                            <td>24h/24, 7j/7, 365j/an</td>
+                        </tr>
+                        <tr>
+                            <td>Cout par appel</td>
+                            <td>5-8&#8364; / appel</td>
+                            <td>0,85&#8364; / appel</td>
+                        </tr>
+                        <tr>
+                            <td>Relance renouvellements</td>
+                            <td>Manuelle, souvent oubliee</td>
+                            <td>Automatique J-30, J-15, J-7</td>
+                        </tr>
+                        <tr>
+                            <td>Ouverture sinistre</td>
+                            <td>En attente, rappel 24-48h</td>
+                            <td>Immediat, &lt;5 minutes</td>
+                        </tr>
+                        <tr>
+                            <td>Generation devis</td>
+                            <td>RDV necessaire, delai 2-5j</td>
+                            <td>En temps reel pendant l'appel</td>
+                        </tr>
+                        <tr>
+                            <td>Scalabilite</td>
+                            <td>Recrutement + formation</td>
+                            <td>Instantanee, illimitee</td>
+                        </tr>
+                        <tr>
+                            <td>Reporting & CRM</td>
+                            <td>Notes manuelles, partielles</td>
+                            <td>Automatique, exhaustif, temps reel</td>
+                        </tr>
+                        <tr>
+                            <td>Multilingue</td>
+                            <td>Selon personnel disponible</td>
+                            <td>FR, EN, DE, IT, ES natif</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ROI
+         ============================================ -->
+    <section class="section roi-section" id="roi">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">07 &mdash; Retour sur Investissement</span>
+                <h2 class="section-title">
+                    Votre ROI en <span class="gradient-text">Chiffres</span>
+                </h2>
+                <p class="section-subtitle">
+                    Comparaison sur 12 mois. Base : cabinet de courtage avec 10 000 contrats et 2 000 appels/mois.
+                </p>
+            </div>
+
+            <div class="roi-grid reveal">
+                <div class="roi-card before">
+                    <h3>&#10060; Avant &mdash; Standard Classique</h3>
+                    <div class="roi-line">
+                        <span class="roi-line-label">2 employes standard (charges)</span>
+                        <span class="roi-line-value">96 000&#8364;/an</span>
+                    </div>
+                    <div class="roi-line">
+                        <span class="roi-line-label">Taux de renouvellement</span>
+                        <span class="roi-line-value">68%</span>
+                    </div>
+                    <div class="roi-line">
+                        <span class="roi-line-label">Contrats perdus / an</span>
+                        <span class="roi-line-value">3 200</span>
+                    </div>
+                    <div class="roi-line">
+                        <span class="roi-line-label">CA perdu (prime moy. 600&#8364;)</span>
+                        <span class="roi-line-value" style="color: var(--accent-red);">192 000&#8364;</span>
+                    </div>
+                    <div class="roi-line">
+                        <span class="roi-line-label">Conversion devis</span>
+                        <span class="roi-line-value">18%</span>
+                    </div>
+                    <div class="roi-line">
+                        <span class="roi-line-label">Total cout + manque a gagner</span>
+                        <span class="roi-line-value" style="color: var(--accent-red);">288 000&#8364;/an</span>
+                    </div>
+                </div>
+
+                <div class="roi-card after">
+                    <h3>&#9989; Avec Vocalis AI</h3>
+                    <div class="roi-line">
+                        <span class="roi-line-label">Setup (amorti 12 mois)</span>
+                        <span class="roi-line-value">333&#8364;/mois</span>
+                    </div>
+                    <div class="roi-line">
+                        <span class="roi-line-label">Management mensuel</span>
+                        <span class="roi-line-value">900&#8364;/mois</span>
+                    </div>
+                    <div class="roi-line">
+                        <span class="roi-line-label">Total sur 12 mois</span>
+                        <span class="roi-line-value">14 800&#8364;</span>
+                    </div>
+                    <div class="roi-line">
+                        <span class="roi-line-label">Taux de renouvellement</span>
+                        <span class="roi-line-value" style="color: var(--accent-green);">92%</span>
+                    </div>
+                    <div class="roi-line">
+                        <span class="roi-line-label">Contrats sauves / an</span>
+                        <span class="roi-line-value" style="color: var(--accent-green);">+2 400</span>
+                    </div>
+                    <div class="roi-line">
+                        <span class="roi-line-label">CA supplementaire genere</span>
+                        <span class="roi-line-value" style="color: var(--accent-green);">+144 000&#8364;</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="roi-highlight reveal">
+                <div class="roi-highlight-card">
+                    <div class="roi-highlight-number gradient-text">14 800&#8364;</div>
+                    <div class="roi-highlight-label">Investissement total<br>an 1 (setup + mgmt)</div>
+                </div>
+                <div class="roi-highlight-card">
+                    <div class="roi-highlight-number" style="color: var(--accent-red);">288 000&#8364;</div>
+                    <div class="roi-highlight-label">Ce que vous perdez<br>aujourd'hui / an</div>
+                </div>
+                <div class="roi-highlight-card">
+                    <div class="roi-highlight-number" style="color: var(--accent-green);">+144 000&#8364;</div>
+                    <div class="roi-highlight-label">CA supplementaire<br>genere / an</div>
+                </div>
+                <div class="roi-highlight-card">
+                    <div class="roi-highlight-number" style="color: var(--accent-green);">9.7x</div>
+                    <div class="roi-highlight-label">Retour sur<br>investissement</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PRICING / INVESTISSEMENT
+         ============================================ -->
+    <section class="section" id="tarifs">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">08 &mdash; Investissement</span>
+                <h2 class="section-title">
+                    Une Tarification <span class="gradient-text">Simple et Transparente</span>
+                </h2>
+                <p class="section-subtitle">
+                    Setup unique + management mensuel tout inclus. Operationnel en 7 jours.
+                </p>
+            </div>
+
+            <div class="pricing-grid reveal">
+                <!-- Setup -->
+                <div class="glass-card pricing-card">
+                    <div class="plan-name">SETUP</div>
+                    <div class="plan-price gradient-text">4 000&#8364;</div>
+                    <div class="plan-period">HT &middot; paiement unique</div>
+                    <ul class="plan-features">
+                        <li><span class="check-icon">&#10003;</span> Agent vocal configure sur mesure</li>
+                        <li><span class="check-icon">&#10003;</span> Scenarios assurance parametres</li>
+                        <li><span class="check-icon">&#10003;</span> Integration CRM / outils metier</li>
+                        <li><span class="check-icon">&#10003;</span> Sequences de relance redigees</li>
+                        <li><span class="check-icon">&#10003;</span> Dashboard personnalise</li>
+                        <li><span class="check-icon">&#10003;</span> Formation equipe incluse</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary">Configuration en 7 jours</a>
+                </div>
+
+                <!-- Management -->
+                <div class="glass-card pricing-card featured">
+                    <div class="plan-name">MANAGEMENT MENSUEL</div>
+                    <div class="plan-price gradient-text">900&#8364;</div>
+                    <div class="plan-period">HT / mois &middot; tout inclus</div>
+                    <ul class="plan-features">
+                        <li><span class="check-icon">&#10003;</span> Appels entrants & sortants illimites</li>
+                        <li><span class="check-icon">&#10003;</span> Relance renouvellements automatique</li>
+                        <li><span class="check-icon">&#10003;</span> Gestion sinistres 24/7</li>
+                        <li><span class="check-icon">&#10003;</span> Optimisation continue IA</li>
+                        <li><span class="check-icon">&#10003;</span> Rapport de performance mensuel</li>
+                        <li><span class="check-icon">&#10003;</span> Support prioritaire reactif</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Demarrer Maintenant</a>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="glass-card pricing-card">
+                    <div class="plan-name">ENTERPRISE</div>
+                    <div class="plan-price gradient-text">Sur mesure</div>
+                    <div class="plan-period">Compagnies & mutuelles</div>
+                    <ul class="plan-features">
+                        <li><span class="check-icon">&#10003;</span> Volume illimite</li>
+                        <li><span class="check-icon">&#10003;</span> Multi-agences / multi-sites</li>
+                        <li><span class="check-icon">&#10003;</span> API dedicee & SLA garanti</li>
+                        <li><span class="check-icon">&#10003;</span> Account manager dedie</li>
+                        <li><span class="check-icon">&#10003;</span> On-premise disponible</li>
+                        <li><span class="check-icon">&#10003;</span> Conformite DPA & ACPR</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary">Nous Contacter</a>
+                </div>
+            </div>
+
+            <p class="pricing-note reveal">
+                <strong>Engagement : 3 mois minimum</strong> &mdash; Libre apres 3 mois &middot; Vos donnees vous appartiennent &middot; Conformite RGPD assuree
+            </p>
+
+            <!-- Timeline Deploiement -->
+            <div style="margin-top: 80px;">
+                <h3 class="section-title reveal" style="text-align: center; font-size: 28px; margin-bottom: 48px;">
+                    Operationnel en <span class="gradient-text">7 Jours</span>
+                </h3>
+
+                <div class="timeline reveal">
+                    <div class="timeline-step">
+                        <div class="timeline-dot">1</div>
+                        <div class="timeline-day">J+1</div>
+                        <div class="timeline-label">Signature &<br>paiement setup</div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-dot">2</div>
+                        <div class="timeline-day">J+2</div>
+                        <div class="timeline-label">Briefing contrats<br>& scenarios</div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-dot">3</div>
+                        <div class="timeline-day">J+4</div>
+                        <div class="timeline-label">Configuration<br>& parametrage IA</div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-dot">4</div>
+                        <div class="timeline-day">J+6</div>
+                        <div class="timeline-label">Tests &<br>validation</div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-dot done">&#10003;</div>
+                        <div class="timeline-day" style="color: var(--accent-green);">J+7</div>
+                        <div class="timeline-label">Go Live !<br>Premiers appels</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FAQ
+         ============================================ -->
+    <section class="section faq" id="faq">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">09 &mdash; FAQ</span>
+                <h2 class="section-title">
+                    Questions <span class="gradient-text">Frequentes</span>
+                </h2>
+            </div>
+
+            <div class="faq-list reveal">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        L'IA peut-elle vraiment gerer un dossier sinistre complet ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>L'IA collecte toutes les informations necessaires a l'ouverture du dossier (date, circonstances, tiers impliques, photos si applicable) et transmet le dossier complet a votre equipe pour traitement. Les cas complexes sont transferes immediatement a un gestionnaire humain.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Les clients savent-ils qu'ils parlent a une IA ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Oui, conformement a la reglementation. L'agent se presente comme un assistant vocal du cabinet. La qualite de la voix et la fluidite de la conversation font que les clients cooperent naturellement et apprecient la rapidite du service.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Comment s'integre Vocalis avec mes outils actuels ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Vocalis dispose de connecteurs natifs pour les principaux CRM (Salesforce, HubSpot) et outils metier assurance (Oggo, Lya, Assurbox). Pour les solutions internes, notre API REST ouverte permet une integration en quelques jours.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Qu'en est-il de la confidentialite des donnees client ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Donnees hebergees en Europe, chiffrement AES-256, conformite RGPD & DPA. Aucune donnee n'est utilisee pour entrainer des modeles tiers. Audit de securite disponible sur demande. Vos donnees vous appartiennent integralement.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Que se passe-t-il en cas de pic d'appels (tempete, grele) ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>C'est justement l'un des atouts majeurs de Vocalis. Contrairement a un standard humain, l'IA peut gerer des centaines d'appels simultanement. Lors d'un evenement climatique, elle prend en charge les declarations de sinistre en masse, ouvre les dossiers et rassure vos assures sans aucun temps d'attente.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        L'IA remplace-t-elle mes courtiers ou gestionnaires ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Non. Vocalis prend en charge les taches repetitives et les appels de premier niveau (80% du volume). Vos courtiers se concentrent sur le conseil, la negociation et la relation client premium. C'est un modele hybride qui multiplie l'efficacite de votre equipe.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CTA / CONTACT
+         ============================================ -->
+    <section class="section cta-section" id="contact">
+        <div class="container">
+            <div class="cta-card reveal">
+                <h2 class="section-title">
+                    Pret a Transformer votre<br>
+                    <span class="gradient-text">Cabinet d'Assurance</span> ?
+                </h2>
+                <p class="section-subtitle">
+                    Demandez votre demo gratuite et decouvrez combien Vocalis peut generer de renouvellements supplementaires pour votre cabinet.
+                </p>
+
+                <div class="cta-form" id="ctaForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Prenom" required id="firstName">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Nom" required id="lastName">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Email professionnel" required id="email">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-input" placeholder="Telephone" id="phone">
+                        </div>
+                        <div class="form-group full-width">
+                            <select class="form-select" id="volume">
+                                <option value="" disabled selected>Type d'activite</option>
+                                <option value="courtier-auto">Courtier Auto / Habitation</option>
+                                <option value="courtier-sante">Courtier Sante / Prevoyance</option>
+                                <option value="courtier-pro">Courtier Pro / Entreprise</option>
+                                <option value="mutuelle">Mutuelle / Institution</option>
+                                <option value="compagnie">Compagnie d'Assurance</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <select class="form-select" id="contrats">
+                                <option value="" disabled selected>Nombre de contrats en portefeuille</option>
+                                <option value="0-5000">Moins de 5 000</option>
+                                <option value="5000-15000">5 000 - 15 000</option>
+                                <option value="15000-50000">15 000 - 50 000</option>
+                                <option value="50000+">Plus de 50 000</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-large form-submit" onclick="submitForm()">
+                        Demander ma Demo Gratuite
+                    </button>
+
+                    <div class="form-trust">
+                        <span>&#128274; Donnees securisees</span>
+                        <span>&#9201; Reponse sous 24h</span>
+                        <span>&#128176; Sans engagement</span>
+                    </div>
+                </div>
+
+                <div class="form-success" id="formSuccess">
+                    <div class="success-icon">&#10004;&#65039;</div>
+                    <h3>Demande envoyee !</h3>
+                    <p>Notre equipe vous contactera sous 24h pour planifier votre demo personnalisee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="navbar-logo">
+                        <span class="navbar-logo-main">
+                            <span class="gradient-text">Vocalis AI</span> Assurance
+                        </span>
+                        <span class="navbar-logo-sub">www.vocalis.pro</span>
+                    </div>
+                    <p>L'agent vocal IA qui transforme la relation client dans l'assurance. Plus efficace, plus humain, plus rentable.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Solution</h4>
+                    <ul>
+                        <li><a href="#fonctionnalites">Fonctionnalites</a></li>
+                        <li><a href="#cas-clients">Cas Clients</a></li>
+                        <li><a href="#roi">ROI</a></li>
+                        <li><a href="#tarifs">Tarifs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Ressources</h4>
+                    <ul>
+                        <li><a href="#">Guide Integration</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Etudes de Cas</a></li>
+                        <li><a href="#">Webinaires</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Mentions Legales</a></li>
+                        <li><a href="#">Politique de Confidentialite</a></li>
+                        <li><a href="#">CGV</a></li>
+                        <li><a href="#">Conformite RGPD</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Vocalis AI &mdash; <a href="https://vocalis.pro" target="_blank">vocalis.pro</a> &middot; VAULT 369 LTD</p>
+                <p>contact@vocalis.pro</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        // Mobile Navigation
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                navbar.style.background = 'rgba(10, 10, 15, 0.95)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 15, 0.8)';
+            }
+        });
+
+        // FAQ Accordion
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+            if (!isActive) faqItem.classList.add('active');
+        }
+
+        // Form Submission
+        function submitForm() {
+            const firstName = document.getElementById('firstName').value;
+            const email = document.getElementById('email').value;
+            if (!firstName || !email) {
+                alert('Veuillez remplir au minimum votre prenom et email.');
+                return;
+            }
+            document.getElementById('ctaForm').style.display = 'none';
+            document.getElementById('formSuccess').classList.add('show');
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
