@@ -9,6 +9,51 @@
     <meta property="og:title" content="Leads Generation | Prospection B2B Automatisee par IA">
     <meta property="og:description" content="1000+ prospects qualifies/mois. Mise en place en 72h. ROI 8x en 90 jours.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lead-gene.com/leads-generation.html">
+    <link rel="canonical" href="https://lead-gene.com/leads-generation.html">
+    <meta name="robots" content="index, follow">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lead-Gene — Prospection B2B Automatisée par IA">
+    <meta name="twitter:description" content="1000+ prospects qualifiés/mois. Mise en place en 72h. ROI 8x en 90 jours.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "Lead-Gene",
+          "url": "https://lead-gene.com",
+          "description": "Solution de prospection B2B automatisée par IA"
+        },
+        {
+          "@type": "Service",
+          "name": "Prospection B2B Automatisée",
+          "provider": {"@type": "Organization", "name": "Lead-Gene"},
+          "description": "Génération de 1000+ leads B2B qualifiés par mois en pilote automatique avec IA.",
+          "areaServed": ["FR", "CH", "BE", "CA"]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Comment fonctionne la prospection automatisée ?", "acceptedAnswer": {"@type": "Answer", "text": "Notre système IA identifie, qualifie et contacte automatiquement vos prospects B2B via email, LinkedIn et téléphone. Mise en place en 72h."}},
+            {"@type": "Question", "name": "Combien de leads puis-je générer ?", "acceptedAnswer": {"@type": "Answer", "text": "En moyenne, nos clients génèrent 1000+ prospects qualifiés par mois, avec un taux d'ouverture de 38% et un ROI de x8 en 90 jours."}},
+            {"@type": "Question", "name": "Quels secteurs sont couverts ?", "acceptedAnswer": {"@type": "Answer", "text": "Notre solution s'adapte à tous les secteurs B2B : SaaS, services, conseil, immobilier, finance, assurance, construction, etc."}},
+            {"@type": "Question", "name": "Comment s'intègre-t-il avec mon CRM ?", "acceptedAnswer": {"@type": "Answer", "text": "Lead-Gene s'intègre nativement avec les principaux CRM (HubSpot, Salesforce, Pipedrive) et via Zapier/Make pour les autres."}},
+            {"@type": "Question", "name": "Quel est le ROI attendu ?", "acceptedAnswer": {"@type": "Answer", "text": "Nos clients constatent en moyenne un ROI de x8 dans les 90 premiers jours, avec un coût par lead qualifié 5x inférieur à la prospection manuelle."}}
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W8L2JXEHXB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-W8L2JXEHXB');
+    </script>
 
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
 
@@ -124,6 +169,28 @@
             font-family: var(--font-heading);
             font-size: 22px;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .navbar-vocalis-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 14px;
+            background: linear-gradient(135deg, #7c3aed, #0693E3);
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            white-space: nowrap;
+            box-shadow: 0 2px 12px rgba(124,58,237,0.4);
+            transition: var(--transition);
+        }
+        .navbar-vocalis-badge:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 18px rgba(124,58,237,0.5);
         }
 
         .navbar-logo span {
@@ -780,451 +847,7 @@
         /* ============================================
            RESPONSIVE
            ============================================ */
-        /* ============================================
-           GTM ARCHITECTURE — CORPORATE LIGHT VOCALIS
-           ============================================ */
-        .architecture {
-            background: linear-gradient(180deg, #f0eaf8 0%, #e8e0f5 30%, #ddd4f0 50%, #e8e0f5 70%, #f0eaf8 100%);
-            overflow: hidden;
-            position: relative;
-            color: #1a1a2e;
-        }
-
-        .architecture::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(ellipse 700px 400px at 15% 20%, rgba(155,81,224,0.08), transparent),
-                radial-gradient(ellipse 600px 350px at 85% 70%, rgba(6,147,227,0.06), transparent);
-            pointer-events: none;
-        }
-
-        /* Header with by vocalis badge */
-        .arch-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .arch-header-left {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .arch-vocalis-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 20px;
-            background: linear-gradient(135deg, #2d1b69, #4a2d8a);
-            border-radius: 50px;
-            font-family: var(--font-heading);
-            font-size: 13px;
-            font-weight: 600;
-            color: #fff;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(45, 27, 105, 0.3);
-        }
-
-        .arch-vocalis-badge:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(45, 27, 105, 0.4);
-        }
-
-        .arch-vocalis-badge .badge-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #34d399;
-            animation: pulse-dot 2s infinite;
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-
-        .architecture .section-label {
-            color: #7c3aed;
-            font-size: 12px;
-            letter-spacing: 2.5px;
-        }
-
-        .architecture .section-title {
-            color: #1a1a2e;
-            font-size: clamp(26px, 3.5vw, 38px);
-        }
-
-        .architecture .section-title .gradient-text {
-            background: linear-gradient(135deg, #7c3aed, #0693E3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .architecture .section-desc {
-            color: #5a5a7a;
-            font-size: 16px;
-        }
-
-        .arch-diagram {
-            margin-top: 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Row of cards */
-        .arch-row {
-            display: grid;
-            gap: 18px;
-            align-items: stretch;
-        }
-
-        .arch-row-top { grid-template-columns: repeat(4, 1fr); }
-        .arch-row-bottom { grid-template-columns: repeat(3, 1fr); }
-
-        /* Corporate card — light glass */
-        .arch-card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            border-radius: 16px;
-            padding: 24px 20px;
-            position: relative;
-            transition: var(--transition);
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(100, 60, 180, 0.08);
-        }
-
-        .arch-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            border-radius: 16px 16px 0 0;
-        }
-
-        .arch-card.signal::before   { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
-        .arch-card.engine::before    { background: linear-gradient(90deg, #0693E3, #38bdf8); }
-        .arch-card.database::before  { background: linear-gradient(90deg, #7c3aed, #a855f7); }
-        .arch-card.outreach::before  { background: linear-gradient(90deg, #059669, #34d399); }
-        .arch-card.dashboard::before { background: linear-gradient(90deg, #0284c7, #38bdf8); }
-        .arch-card.booking::before   { background: linear-gradient(90deg, #d97706, #fbbf24); }
-        .arch-card.acquisition::before { background: linear-gradient(90deg, #059669, #6ee7b7); }
-
-        .arch-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 35px rgba(100, 60, 180, 0.15);
-        }
-
-        .arch-card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .arch-card-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        .arch-card.signal .arch-card-icon   { background: #f3f0ff; }
-        .arch-card.engine .arch-card-icon    { background: #e0f7ff; }
-        .arch-card.database .arch-card-icon  { background: #f0e8ff; }
-        .arch-card.outreach .arch-card-icon  { background: #e6faf2; }
-        .arch-card.dashboard .arch-card-icon { background: #e0f2ff; }
-        .arch-card.booking .arch-card-icon   { background: #fff8e6; }
-        .arch-card.acquisition .arch-card-icon { background: #e6faf2; }
-
-        .arch-card-title {
-            font-family: var(--font-heading);
-            font-size: 15px;
-            font-weight: 700;
-            color: #1a1a2e;
-        }
-
-        .arch-card ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .arch-card li {
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            font-size: 13px;
-            color: #4a4a6a;
-        }
-
-        .arch-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .arch-dot.violet { background: #8b5cf6; }
-        .arch-dot.cyan   { background: #0693E3; }
-        .arch-dot.purple { background: #7c3aed; }
-        .arch-dot.green  { background: #059669; }
-        .arch-dot.orange { background: #d97706; }
-        .arch-dot.blue   { background: #0284c7; }
-
-        .arch-card li .arch-emoji {
-            font-size: 15px;
-            flex-shrink: 0;
-        }
-
-        /* Sources badges */
-        .arch-sources {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 14px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(0,0,0,0.06);
-        }
-
-        .arch-source {
-            font-size: 10px;
-            font-weight: 600;
-            padding: 4px 10px;
-            background: #f5f3ff;
-            border: 1px solid #e9e5f5;
-            border-radius: 6px;
-            color: #6b5b95;
-            transition: var(--transition);
-        }
-
-        .arch-source:hover { background: #ede8ff; }
-
-        /* Data table mockup */
-        .arch-table {
-            margin-top: 14px;
-            background: #fafafe;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid #eee8f5;
-        }
-
-        .arch-table-header {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            padding: 7px 12px;
-            background: #f3f0fa;
-            font-size: 9px;
-            font-weight: 700;
-            color: #8a7ab0;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .arch-table-row {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            padding: 6px 12px;
-            font-size: 11px;
-            color: #4a4a6a;
-            border-top: 1px solid #f0ecf5;
-        }
-
-        .arch-table-row .score { font-weight: 700; }
-        .arch-table-row .score.high { color: #059669; }
-        .arch-table-row .score.med  { color: #d97706; }
-
-        /* Message mockup */
-        .arch-msg {
-            margin-top: 14px;
-            background: #fafafe;
-            border-radius: 10px;
-            padding: 14px;
-            border: 1px solid #eee8f5;
-        }
-
-        .arch-msg-from {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        .arch-msg-avatar {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #7c3aed, #0693E3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            color: #fff;
-            font-weight: 700;
-        }
-
-        .arch-msg-name {
-            font-size: 12px;
-            font-weight: 600;
-            color: #1a1a2e;
-        }
-
-        .arch-msg-badge {
-            padding: 2px 7px;
-            background: #0077B5;
-            border-radius: 3px;
-            font-size: 9px;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .arch-msg-text {
-            font-size: 12px;
-            color: #6b6b8a;
-            line-height: 1.6;
-            font-style: italic;
-        }
-
-        /* Calendar mockup */
-        .arch-calendar {
-            margin-top: 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .arch-cal-slot {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 7px 12px;
-            background: #fafafe;
-            border-radius: 8px;
-            font-size: 12px;
-            color: #4a4a6a;
-            border: 1px solid #f0ecf5;
-        }
-
-        .arch-cal-indicator {
-            width: 3px;
-            height: 22px;
-            border-radius: 2px;
-            flex-shrink: 0;
-        }
-
-        .arch-cal-indicator.confirmed { background: #059669; }
-        .arch-cal-indicator.pending   { background: #d97706; }
-        .arch-cal-indicator.available { background: #d4d4e0; }
-
-        .arch-cal-slot strong {
-            color: #1a1a2e;
-            font-size: 11px;
-        }
-
-        /* Agent card */
-        .arch-agent {
-            margin-top: 14px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 14px;
-            background: linear-gradient(135deg, #e6faf2, #e0f2ff);
-            border-radius: 12px;
-            border: 1px solid #d0ede0;
-        }
-
-        .arch-agent-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #059669, #0693E3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(5,150,105,0.25);
-        }
-
-        .arch-agent-text {
-            font-size: 12px;
-            color: #4a6a5a;
-            line-height: 1.6;
-        }
-
-        .arch-agent-text strong {
-            color: #1a2e1a;
-            font-size: 13px;
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        /* Flow connector arrows */
-        .arch-connector {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 0;
-            position: relative;
-        }
-
-        .arch-connector svg { overflow: visible; }
-
-        .arch-arrow-svg {
-            filter: drop-shadow(0 1px 3px rgba(124,58,237,0.15));
-        }
-
-        /* CRM hub at bottom */
-        .arch-crm-hub {
-            text-align: center;
-            margin-top: 8px;
-        }
-
-        .arch-crm-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 36px;
-            background: linear-gradient(135deg, #2d1b69, #4a2d8a);
-            border: none;
-            border-radius: 60px;
-            font-family: var(--font-heading);
-            font-size: 17px;
-            font-weight: 700;
-            color: #fff;
-            box-shadow: 0 8px 30px rgba(45, 27, 105, 0.25);
-        }
-
-        .arch-crm-tools {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 14px;
-        }
-
-        .arch-crm-tool {
-            font-size: 12px;
-            font-weight: 600;
-            padding: 5px 14px;
-            background: #fff;
-            border: 1px solid #e0d8f0;
-            border-radius: 8px;
-            color: #6b5b95;
-            box-shadow: 0 2px 8px rgba(100,60,180,0.06);
-        }
+        
 
         @media (max-width: 1024px) {
             .hero .container {
@@ -1269,13 +892,6 @@
             .testimonials-grid {
                 grid-template-columns: 1fr;
             }
-            .arch-row-top,
-            .arch-row-bottom {
-                grid-template-columns: 1fr 1fr;
-            }
-            .arch-row-arrows {
-                display: none;
-            }
             .footer-grid {
                 grid-template-columns: 1fr;
             }
@@ -1301,10 +917,6 @@
             .sectors-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            .arch-row-top,
-            .arch-row-bottom {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -1317,6 +929,7 @@
         <div class="container">
             <div class="navbar-logo">
                 <span>Leads</span> Generation
+                <a href="https://vocalis.pro" target="_blank" class="navbar-vocalis-badge">⚡ by vocalis.pro</a>
             </div>
             <ul class="navbar-links">
                 <li><a href="#solution">Solution</a></li>
@@ -1520,237 +1133,6 @@
                         <span class="step-tool">CRM</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================
-         GTM ARCHITECTURE DIAGRAM
-         ============================================ -->
-    <section class="architecture" id="architecture">
-        <div class="container">
-            <div class="arch-header">
-                <div class="arch-header-left">
-                    <div class="section-label" style="margin-bottom:0;">Architecture du Systeme</div>
-                </div>
-                <a href="https://vocalis.pro" target="_blank" class="arch-vocalis-badge">
-                    <div class="badge-dot"></div>
-                    by vocalis.pro
-                </a>
-            </div>
-            <h2 class="section-title">Comment nous <span class="gradient-text">remplissons votre agenda</span></h2>
-            <p class="section-desc">Un processus en 7 etapes entierement automatise &mdash; vous ne vous occupez que de closer.</p>
-
-            <div class="arch-diagram">
-
-                <!-- ===== ROW 1 : Identification → Qualification → Ciblage → Contact ===== -->
-                <div class="arch-row arch-row-top">
-
-                    <div class="arch-card signal">
-                        <div class="arch-card-header">
-                            <div class="arch-card-icon">&#127919;</div>
-                            <div class="arch-card-title">Identification</div>
-                        </div>
-                        <ul>
-                            <li><span class="arch-dot violet"></span> Detection des entreprises cibles</li>
-                            <li><span class="arch-dot violet"></span> Signaux d'intention d'achat</li>
-                            <li><span class="arch-dot violet"></span> Veille sectorielle automatisee</li>
-                            <li><span class="arch-dot violet"></span> Analyse du marche en temps reel</li>
-                        </ul>
-                    </div>
-
-                    <div class="arch-card engine">
-                        <div class="arch-card-header">
-                            <div class="arch-card-icon">&#129504;</div>
-                            <div class="arch-card-title">Qualification IA</div>
-                        </div>
-                        <ul>
-                            <li><span class="arch-dot cyan"></span> Scoring intelligent</li>
-                            <li><span class="arch-dot cyan"></span> Enrichissement des donnees</li>
-                            <li><span class="arch-dot cyan"></span> Validation des contacts</li>
-                        </ul>
-                        <div class="arch-table">
-                            <div class="arch-table-header">
-                                <span>Prospect</span>
-                                <span>Score</span>
-                                <span>Priorite</span>
-                            </div>
-                            <div class="arch-table-row">
-                                <span>Entreprise A</span>
-                                <span class="score high">92</span>
-                                <span class="score high">Haute</span>
-                            </div>
-                            <div class="arch-table-row">
-                                <span>Entreprise B</span>
-                                <span class="score high">87</span>
-                                <span class="score high">Haute</span>
-                            </div>
-                            <div class="arch-table-row">
-                                <span>Entreprise C</span>
-                                <span class="score med">74</span>
-                                <span class="score med">Moyenne</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="arch-card database">
-                        <div class="arch-card-header">
-                            <div class="arch-card-icon">&#128203;</div>
-                            <div class="arch-card-title">Ciblage Precis</div>
-                        </div>
-                        <ul>
-                            <li><span class="arch-dot purple"></span> Decideurs identifies</li>
-                            <li><span class="arch-dot purple"></span> Coordonnees verifiees</li>
-                            <li><span class="arch-dot purple"></span> Profil complet du prospect</li>
-                        </ul>
-                        <div class="arch-table">
-                            <div class="arch-table-header">
-                                <span>Decideur</span>
-                                <span>Poste</span>
-                                <span>Statut</span>
-                            </div>
-                            <div class="arch-table-row">
-                                <span>Jean M.</span>
-                                <span>DG</span>
-                                <span class="score high">Pret</span>
-                            </div>
-                            <div class="arch-table-row">
-                                <span>Claire P.</span>
-                                <span>Dir. Ops</span>
-                                <span class="score high">Pret</span>
-                            </div>
-                            <div class="arch-table-row">
-                                <span>Paul R.</span>
-                                <span>DAF</span>
-                                <span class="score med">A relancer</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="arch-card outreach">
-                        <div class="arch-card-header">
-                            <div class="arch-card-icon">&#128232;</div>
-                            <div class="arch-card-title">Prise de Contact</div>
-                        </div>
-                        <ul>
-                            <li><span class="arch-dot green"></span> Messages personnalises</li>
-                            <li><span class="arch-dot green"></span> Approche multi-canal</li>
-                        </ul>
-                        <div class="arch-msg">
-                            <div class="arch-msg-from">
-                                <div class="arch-msg-avatar">&#9993;</div>
-                                <span class="arch-msg-name">Email + LinkedIn</span>
-                                <span class="arch-msg-badge">in</span>
-                            </div>
-                            <div class="arch-msg-text">
-                                "Bonjour Jean, j'ai identifie un levier de croissance pour votre entreprise. Seriez-vous disponible 15 minutes cette semaine ?"
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- ===== FLECHES ===== -->
-                <div class="arch-connector">
-                    <svg width="100%" height="50" viewBox="0 0 1200 50" preserveAspectRatio="none">
-                        <defs>
-                            <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.5" />
-                                <stop offset="100%" style="stop-color:#0693E3;stop-opacity:0.5" />
-                            </linearGradient>
-                            <marker id="arrowHead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-                                <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed" opacity="0.6" />
-                            </marker>
-                        </defs>
-                        <line x1="300" y1="5" x2="300" y2="45" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowHead)" opacity="0.35"/>
-                        <line x1="600" y1="5" x2="600" y2="45" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowHead)" opacity="0.35"/>
-                        <line x1="900" y1="5" x2="900" y2="45" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowHead)" opacity="0.35"/>
-                    </svg>
-                </div>
-
-                <!-- ===== ROW 2 : Suivi → RDV → Conversion ===== -->
-                <div class="arch-row arch-row-bottom">
-
-                    <div class="arch-card dashboard">
-                        <div class="arch-card-header">
-                            <div class="arch-card-icon">&#128260;</div>
-                            <div class="arch-card-title">Suivi &amp; Relances</div>
-                        </div>
-                        <ul>
-                            <li><span class="arch-dot blue"></span> Relances intelligentes automatisees</li>
-                            <li><span class="arch-dot blue"></span> Adaptation au comportement</li>
-                            <li><span class="arch-dot blue"></span> Reporting en temps reel</li>
-                        </ul>
-                    </div>
-
-                    <div class="arch-card booking">
-                        <div class="arch-card-header">
-                            <div class="arch-card-icon">&#128197;</div>
-                            <div class="arch-card-title">Rendez-vous Confirmes</div>
-                        </div>
-                        <ul>
-                            <li><span class="arch-dot orange"></span> Prise de RDV automatique</li>
-                            <li><span class="arch-dot orange"></span> Rappels et confirmations</li>
-                        </ul>
-                        <div class="arch-calendar">
-                            <div class="arch-cal-slot">
-                                <div class="arch-cal-indicator confirmed"></div>
-                                <div><strong>10h00</strong> &nbsp; RDV confirme &mdash; Entreprise A</div>
-                            </div>
-                            <div class="arch-cal-slot">
-                                <div class="arch-cal-indicator confirmed"></div>
-                                <div><strong>11h30</strong> &nbsp; RDV confirme &mdash; Entreprise B</div>
-                            </div>
-                            <div class="arch-cal-slot">
-                                <div class="arch-cal-indicator pending"></div>
-                                <div><strong>14h00</strong> &nbsp; En attente de confirmation</div>
-                            </div>
-                            <div class="arch-cal-slot">
-                                <div class="arch-cal-indicator confirmed"></div>
-                                <div><strong>16h00</strong> &nbsp; RDV confirme &mdash; Entreprise D</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="arch-card acquisition">
-                        <div class="arch-card-header">
-                            <div class="arch-card-icon">&#127942;</div>
-                            <div class="arch-card-title">Conversion &amp; Signature</div>
-                        </div>
-                        <ul>
-                            <li><span class="arch-dot green"></span> Prospects chauds, prets a signer</li>
-                            <li><span class="arch-dot green"></span> Nouveaux clients chaque mois</li>
-                        </ul>
-                        <div class="arch-agent">
-                            <div class="arch-agent-icon">&#129309;</div>
-                            <div class="arch-agent-text">
-                                <strong>Vous fermez la vente</strong>
-                                On vous livre des prospects qualifies et des RDV confirmes. Vous n'avez plus qu'a closer.
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- ===== FLECHE VERS RESULTATS ===== -->
-                <div class="arch-connector">
-                    <svg width="100%" height="40" viewBox="0 0 1200 40" preserveAspectRatio="none">
-                        <line x1="600" y1="0" x2="600" y2="38" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowHead)" opacity="0.35"/>
-                    </svg>
-                </div>
-
-                <!-- ===== RESULTAT FINAL ===== -->
-                <div class="arch-crm-hub">
-                    <div class="arch-crm-badge">
-                        &#128200; Votre pipeline se remplit en automatique
-                    </div>
-                    <div class="arch-crm-tools">
-                        <span class="arch-crm-tool">+1000 prospects/mois</span>
-                        <span class="arch-crm-tool">20-50 RDV/mois</span>
-                        <span class="arch-crm-tool">ROI 8x en 90 jours</span>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
