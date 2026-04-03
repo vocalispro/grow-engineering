@@ -12,9 +12,11 @@
     <meta property="og:url" content="https://lead-gene.com/leads-generation.html">
     <link rel="canonical" href="https://lead-gene.com/leads-generation.html">
     <meta name="robots" content="index, follow">
+    <meta property="og:image" content="https://lead-gene.com/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Lead-Gene — Prospection B2B Automatisée par IA">
     <meta name="twitter:description" content="1000+ prospects qualifiés/mois. Mise en place en 72h. ROI 8x en 90 jours.">
+    <meta name="twitter:image" content="https://lead-gene.com/og-image.png">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -47,7 +49,13 @@
     </script>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W8L2JXEHXB"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  var _c = (typeof localStorage !== 'undefined') ? localStorage.getItem('lg_cookies') : null;
+  gtag('consent', 'default', { analytics_storage: _c === 'accepted' ? 'granted' : 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', wait_for_update: 500 });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W8L2JXEHXB"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -936,6 +944,7 @@
                 <li><a href="#secteurs">Secteurs</a></li>
                 <li><a href="#resultats">Resultats</a></li>
                 <li><a href="#processus">Processus</a></li>
+                <li><a href="/">Accueil</a></li>
                 <li><a href="#rdv" class="btn-primary">Reserver un appel</a></li>
             </ul>
             <button class="navbar-toggle" onclick="document.querySelector('.navbar-links').classList.toggle('show')">&#9776;</button>
@@ -1351,6 +1360,8 @@
                 <div class="footer-col">
                     <h4>Ressources</h4>
                     <ul>
+                        <li><a href="/">Accueil</a></li>
+                        <li><a href="/proposition-assurance.html">Solution Assurance</a></li>
                         <li><a href="https://vocalis.pro/blog" target="_blank">Blog IA</a></li>
                         <li><a href="https://vocalis.pro/documentation/" target="_blank">Documentation</a></li>
                         <li><a href="https://vocalis.pro/ia-generative-pour-lead/" target="_blank">IA Generative &amp; Leads</a></li>

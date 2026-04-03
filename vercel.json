@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/leads-generation.html",
+      "permanent": false
+    }
+  ]
+}
