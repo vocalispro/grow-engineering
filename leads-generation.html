@@ -23,9 +23,20 @@
       "@graph": [
         {
           "@type": "Organization",
-          "name": "Lead-Gene",
+          "name": "Lead Gene",
           "url": "https://lead-gene.com",
+          "logo": "https://lead-gene.com/og-image.png",
           "description": "Solution de prospection B2B automatisée par IA"
+        },
+        {
+          "@type": "WebSite",
+          "name": "Lead Gene",
+          "url": "https://lead-gene.com",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://lead-gene.com/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
         },
         {
           "@type": "Service",
